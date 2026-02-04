@@ -40,11 +40,13 @@ export class AzureAnalyticsClient {
 
       // Configure auto-collection
       if (config.enableAutoCollection !== false) {
-        appInsights.setAutoCollectRequests(true);
-        appInsights.setAutoCollectPerformance(true);
-        appInsights.setAutoCollectExceptions(true);
-        appInsights.setAutoCollectDependencies(true);
-        appInsights.setAutoCollectConsole(true);
+        const configuration = appInsights.Configuration;
+        configuration
+          .setAutoCollectRequests(true)
+          .setAutoCollectPerformance(true, true)
+          .setAutoCollectExceptions(true)
+          .setAutoCollectDependencies(true)
+          .setAutoCollectConsole(true);
       }
 
       // Set sampling percentage
