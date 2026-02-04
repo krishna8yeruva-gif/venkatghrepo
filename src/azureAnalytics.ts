@@ -49,13 +49,14 @@ export class AzureAnalyticsClient {
           .setAutoCollectConsole(true);
       }
 
-      // Set sampling percentage
-      if (config.samplingPercentage !== undefined) {
-        appInsights.defaultClient.config.samplingPercentage = config.samplingPercentage;
-      }
-
       appInsights.start();
       this.client = appInsights.defaultClient;
+
+      // Set sampling percentage after start
+      if (config.samplingPercentage !== undefined) {
+        this.client.config.samplingPercentage = config.samplingPercentage;
+      }
+
       this.isInitialized = true;
 
       console.log('Azure Analytics client initialized successfully');
