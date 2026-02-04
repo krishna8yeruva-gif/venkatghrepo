@@ -1,4 +1,4 @@
-import { azureAnalytics } from './index';
+import { azureAnalytics } from './index.js';
 
 /**
  * Example usage of Azure Analytics integration
